@@ -69,6 +69,7 @@ class PictureFragment : Fragment(), BackButtonListener {
                         error(R.drawable.ic_load_error_vector)
                         placeholder(R.drawable.ic_no_photo_vector)
                     }
+                    text_of_the_day.text = serverResponseData.explanation
                 }
             }
             is PictureOfTheDayData.Loading -> {
