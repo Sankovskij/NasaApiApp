@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
@@ -64,12 +65,22 @@ class PictureFragment : Fragment(), BackButtonListener {
                     toast("Link is empty")
                 } else {
                     //showSuccess()
-                    image_view.load(url) {
-                        lifecycle(this@PictureFragment)
-                        error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
+                    if (serverResponseData.mediaType == "video") {
+                        web_view.isVisible = true
+                        web_view.clearCache(true)
+                        web_view.clearHistory()
+                        web_view.settings.javaScriptEnabled = true
+                        web_view.settings.javaScriptCanOpenWindowsAutomatically = true
+                        web_view.loadUrl(url)
+                    } else {
+                        web_view.isVisible = false
+                        image_view.load(url) {
+                            lifecycle(this@PictureFragment)
+                            error(R.drawable.ic_load_error_vector)
+                            placeholder(R.drawable.ic_no_photo_vector)
+                        }
+                        text_of_the_day.text = serverResponseData.explanation
                     }
-                    text_of_the_day.text = serverResponseData.explanation
                 }
             }
             is PictureOfTheDayData.Loading -> {
