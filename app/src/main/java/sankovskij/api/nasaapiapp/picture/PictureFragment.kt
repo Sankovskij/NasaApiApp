@@ -17,11 +17,10 @@ import kotlinx.android.synthetic.main.fragment_picture.*
 import ru.terrakok.cicerone.Router
 import sankovskij.api.nasaapiapp.App
 import sankovskij.api.nasaapiapp.R
-import sankovskij.api.nasaapiapp.common.BackButtonListener
 import sankovskij.api.nasaapiapp.picture.model.PictureOfTheDayData
 import javax.inject.Inject
 
-class PictureFragment : Fragment(), BackButtonListener {
+class PictureFragment : Fragment() {
 
     companion object {
         fun newInstance() = PictureFragment()
@@ -35,7 +34,6 @@ class PictureFragment : Fragment(), BackButtonListener {
     }
 
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         App.instance.appComponent.inject(this)
         return View.inflate(context, R.layout.fragment_picture, null)
@@ -46,7 +44,7 @@ class PictureFragment : Fragment(), BackButtonListener {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.getData()
-            .observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
+                .observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
 
         textField.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -100,16 +98,7 @@ class PictureFragment : Fragment(), BackButtonListener {
         }
     }
 
-    override fun backPressed(): Boolean {
-        parentFragmentManager.fragments.forEach {
-            if(it is BackButtonListener && it.backPressed()){
-            }
-        }
-        router.exit()
-        return true
-    }
 }
-
 
 
 

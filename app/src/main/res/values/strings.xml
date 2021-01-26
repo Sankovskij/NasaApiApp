@@ -5,4 +5,5 @@
     <string name="search_wiki">Найти в Википедии</string>
     <string name="wiki_helper_text">Если вы что-то не поняли - поищите в Википедии</string>
     <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="settings">Settings</string>
 </resources>

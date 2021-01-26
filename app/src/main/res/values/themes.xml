@@ -1,10 +1,40 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.NasaApiApp" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="Theme.NasaApiApp" parent="Theme.MaterialComponents.Light">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryDark">@color/purple_700</item>
         <item name="colorAccent">@color/teal_200</item>
         <!-- Customize your theme here. -->
+    </style>
+
+    <style name="Theme.NasaApiApp.Moon" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/moon_colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/moon_colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/moon_colorOnPrimary</item>
+        <item name="colorSecondary">@color/moon_colorSecondary</item>
+        <item name="colorSecondaryVariant">@color/moon_colorSecondaryVariant</item>
+        <item name="colorOnSecondary">@color/moon_colorOnSecondary</item>
+        <item name="colorError">@color/moon_colorError</item>
+        <item name="colorOnError">@color/moon_colorOnError</item>
+        <item name="colorSurface">@color/moon_colorSurface</item>
+        <item name="colorOnSurface">@color/moon_colorOnSurface</item>
+        <item name="android:colorBackground">@color/moon_colorBackground</item>
+        <item name="colorOnBackground">@color/moon_colorOnBackground</item>
+        <item name="materialButtonStyle">@style/AppButton</item>
+        <item name="textInputStyle">@style/AppTextField</item>
+        <item name="materialCardViewStyle">@style/AppCard</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+    </style>
+
+    <style name="AppTextField" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">#FFFFFF</item>
+    </style>
+
+    <style name="AppCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">8dp</item>
     </style>
 </resources>
