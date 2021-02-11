@@ -9,4 +9,17 @@
     <color name="white">#FFFFFFFF</color>
     <color name="color_gray">#66000000</color>
 
+
+    <color name="moon_colorPrimary">#87878A</color>
+    <color name="moon_colorPrimaryVariant">#4E4E4F</color>
+    <color name="moon_colorOnPrimary">#FFFFFF</color>
+    <color name="moon_colorSecondary">#20223E</color>
+    <color name="moon_colorSecondaryVariant">#1C1F37</color>
+    <color name="moon_colorOnSecondary">#FFFFFF</color>
+    <color name="moon_colorError">#8C0A01</color>
+    <color name="moon_colorOnError">#FFFFFF</color>
+    <color name="moon_colorSurface">#FFFFFF</color>
+    <color name="moon_colorOnSurface">#212121</color>
+    <color name="moon_colorBackground">#A8A8A8</color>
+    <color name="moon_colorOnBackground">#212121</color>
 </resources>

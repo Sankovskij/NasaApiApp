@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/pod"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_photo_24"
+        android:title="@string/picture_of_the_day"/>
+
+    <item
+        android:id="@+id/settings"
+        android:iconTint="@color/white"
+        android:enabled="true"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_baseline_settings_24"
+        />
+
+    <item
+        android:id="@+id/tape"
+        android:iconTint="@color/white"
+        android:enabled="true"
+        android:title="@string/tape"
+        android:icon="@drawable/ic_baseline_image_search_24"
+        />
+
+
+</menu>

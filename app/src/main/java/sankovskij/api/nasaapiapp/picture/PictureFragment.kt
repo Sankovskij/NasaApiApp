@@ -9,17 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import coil.api.load
 import kotlinx.android.synthetic.main.fragment_picture.*
 import ru.terrakok.cicerone.Router
 import sankovskij.api.nasaapiapp.App
 import sankovskij.api.nasaapiapp.R
-import sankovskij.api.nasaapiapp.common.BackButtonListener
 import sankovskij.api.nasaapiapp.picture.model.PictureOfTheDayData
 import javax.inject.Inject
 
-class PictureFragment : Fragment(), BackButtonListener {
+class PictureFragment : Fragment() {
 
     companion object {
         fun newInstance() = PictureFragment()
@@ -32,13 +33,18 @@ class PictureFragment : Fragment(), BackButtonListener {
         ViewModelProviders.of(this).get(PictureOfTheDayViewModel::class.java)
     }
 
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         App.instance.appComponent.inject(this)
         return View.inflate(context, R.layout.fragment_picture, null)
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getData()
+                .observe(viewLifecycleOwner, Observer<PictureOfTheDayData> { renderData(it) })
 
         textField.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
@@ -57,10 +63,21 @@ class PictureFragment : Fragment(), BackButtonListener {
                     toast("Link is empty")
                 } else {
                     //showSuccess()
-                    image_view.load(url) {
-                        lifecycle(this@PictureFragment)
-                        error(R.drawable.ic_load_error_vector)
-                        placeholder(R.drawable.ic_no_photo_vector)
+                    if (serverResponseData.mediaType == "video") {
+                        item_web_view.isVisible = true
+                        item_web_view.clearCache(true)
+                        item_web_view.clearHistory()
+                        item_web_view.settings.javaScriptEnabled = true
+                        item_web_view.settings.javaScriptCanOpenWindowsAutomatically = true
+                        item_web_view.loadUrl(url)
+                    } else {
+                        item_web_view.isVisible = false
+                        item_image_view.load(url) {
+                            lifecycle(this@PictureFragment)
+                            error(R.drawable.ic_load_error_vector)
+                            placeholder(R.drawable.ic_no_photo_vector)
+                        }
+                        text_of_the_day.text = serverResponseData.explanation
                     }
                 }
             }
@@ -81,16 +98,7 @@ class PictureFragment : Fragment(), BackButtonListener {
         }
     }
 
-    override fun backPressed(): Boolean {
-        parentFragmentManager.fragments.forEach {
-            if(it is BackButtonListener && it.backPressed()){
-            }
-        }
-        router.exit()
-        return true
-    }
 }
-
 
 
 
