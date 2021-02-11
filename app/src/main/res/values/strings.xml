@@ -6,4 +6,6 @@
     <string name="wiki_helper_text">Если вы что-то не поняли - поищите в Википедии</string>
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="settings">Settings</string>
+    <string name="picture_of_the_day">Picture Of The Day</string>
+    <string name="tape">Tape</string>
 </resources>

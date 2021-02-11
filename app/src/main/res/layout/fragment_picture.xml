@@ -28,7 +28,7 @@
             app:endIconDrawable="@drawable/ic_wikipedia"
             app:endIconMode="custom"
             app:helperText="@string/wiki_helper_text"
-            app:layout_constraintBottom_toTopOf="@+id/image_view"
+            app:layout_constraintBottom_toTopOf="@+id/item_image_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -43,7 +43,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/image_view"
+                android:id="@+id/item_image_view"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_gravity="center"
@@ -56,7 +56,7 @@
                 app:srcCompat="@drawable/ic_no_photo_vector" />
 
             <WebView
-                android:id="@+id/web_view"
+                android:id="@+id/item_web_view"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
                 android:layout_gravity="center"
@@ -75,7 +75,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_view" />
+                app:layout_constraintTop_toBottomOf="@+id/item_image_view" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

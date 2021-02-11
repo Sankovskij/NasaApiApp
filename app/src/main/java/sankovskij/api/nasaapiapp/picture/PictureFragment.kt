@@ -64,15 +64,15 @@ class PictureFragment : Fragment() {
                 } else {
                     //showSuccess()
                     if (serverResponseData.mediaType == "video") {
-                        web_view.isVisible = true
-                        web_view.clearCache(true)
-                        web_view.clearHistory()
-                        web_view.settings.javaScriptEnabled = true
-                        web_view.settings.javaScriptCanOpenWindowsAutomatically = true
-                        web_view.loadUrl(url)
+                        item_web_view.isVisible = true
+                        item_web_view.clearCache(true)
+                        item_web_view.clearHistory()
+                        item_web_view.settings.javaScriptEnabled = true
+                        item_web_view.settings.javaScriptCanOpenWindowsAutomatically = true
+                        item_web_view.loadUrl(url)
                     } else {
-                        web_view.isVisible = false
-                        image_view.load(url) {
+                        item_web_view.isVisible = false
+                        item_image_view.load(url) {
                             lifecycle(this@PictureFragment)
                             error(R.drawable.ic_load_error_vector)
                             placeholder(R.drawable.ic_no_photo_vector)
